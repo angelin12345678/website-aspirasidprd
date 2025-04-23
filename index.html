@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DPRD Morowali Utara - Aspirasi Masyarakat</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-red-800 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">DPRD Morowali Utara</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="beranda.html" class="hover:underline">Beranda</a></li>
+          <li><a href="tentang.html" class="hover:underline">Tentang</a></li>
+          <li><a href="aspirasi.html" class="underline font-semibold">Aspirasi</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Formulir Aspirasi -->
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto max-w-2xl bg-white p-8 rounded shadow">
+      <h2 class="text-2xl font-bold mb-6 text-center">Formulir Aspirasi Masyarakat</h2>
+      <form id="aspirasiForm" class="space-y-4">
+        <div>
+          <label for="nama" class="block font-medium">Nama:</label>
+          <input type="text" id="nama" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="email" class="block font-medium">Email:</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div>
+          <label for="pesan" class="block font-medium">Aspirasi / Pesan:</label>
+          <textarea id="pesan" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+        </div>
+        <button type="submit" class="bg-red-800 text-white px-4 py-2 rounded hover:bg-red-700">Kirim Aspirasi</button>
+        <p id="formMessage" class="mt-4 font-medium"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById('aspirasiForm');
+    const message = document.getElementById('formMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('nama').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pesan = document.getElementById('pesan').value.trim();
+
+      if (nama && email && pesan) {
+        message.textContent = "Terima kasih! Aspirasi Anda telah dikirim.";
+        message.className = "text-green-600";
+        form.reset();
+      } else {
+        message.textContent = "Harap isi semua kolom dengan benar.";
+        message.className = "text-red-600";
+      }
+    });
+  </script>
+</body>
+</html>
